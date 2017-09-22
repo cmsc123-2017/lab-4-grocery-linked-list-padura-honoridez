@@ -23,7 +23,7 @@ public class GroceryListLinkedTest extends TestCase {
     assertEquals(true, veges.add(eggplant));
   }
   
-  public void testRemove() {
+  public void testRemoveTrue() {
     GroceryItem carrot = new GroceryItem("Carrot", 2);
     GroceryItem cabbage = new GroceryItem("Cabbage", 2);
     GroceryItem squash = new GroceryItem("Squash", 2);
@@ -48,10 +48,12 @@ public class GroceryListLinkedTest extends TestCase {
     veges.add(gabi);
     veges.add(tomato);
     
-    //assertEquals();
+    assertEquals(true, veges.remove("Cabbage"));
+    assertEquals(true, veges.remove("Tomato"));
+    assertEquals(true, veges.remove("Eggplant"));
   }
   
-  public void testDisplay() {
+  public void testRemoveFalse() {
     GroceryItem carrot = new GroceryItem("Carrot", 2);
     GroceryItem cabbage = new GroceryItem("Cabbage", 2);
     GroceryItem squash = new GroceryItem("Squash", 2);
@@ -65,7 +67,76 @@ public class GroceryListLinkedTest extends TestCase {
     
     GroceryListLinked veges = new GroceryListLinked();
     
+    veges.add(carrot);
+    veges.add(cabbage);
+    veges.add(squash);
+    veges.add(okra);
+    veges.add(eggplant);
+    veges.add(gourd);
+    veges.add(spinach);
+    veges.add(shoots);
+    veges.add(gabi);
+    veges.add(tomato);
     
+    assertEquals(false, veges.remove("cabbage"));
+    assertEquals(false, veges.remove("potato"));
+    assertEquals(false, veges.remove("Gourd"));
+  }
+  
+  public void testMarkAsBoughtTrue() {
+    GroceryItem carrot = new GroceryItem("Carrot", 2);
+    GroceryItem cabbage = new GroceryItem("Cabbage", 2);
+    GroceryItem squash = new GroceryItem("Squash", 2);
+    GroceryItem okra = new GroceryItem("Okra", 2);
+    GroceryItem eggplant = new GroceryItem("Eggplant", 2);
+    GroceryItem gourd = new GroceryItem("Bitter Gourd", 2);
+    GroceryItem spinach = new GroceryItem("Spinach", 2);
+    GroceryItem shoots = new GroceryItem("Bamboo Shoots", 2);
+    GroceryItem gabi = new GroceryItem("Gabi", 2);
+    GroceryItem tomato = new GroceryItem("Tomato", 2);
+    
+    GroceryListLinked veges = new GroceryListLinked();
+    
+    veges.add(carrot);
+    veges.add(cabbage);
+    veges.add(squash);
+    veges.add(okra);
+    veges.add(eggplant);
+    veges.add(gourd);
+    veges.add(spinach);
+    veges.add(shoots);
+    
+    assertEquals(true, veges.markAsBought("Cabbage"));
+    assertEquals(true, veges.markAsBought("Squash"));
+    assertEquals(true, veges.markAsBought("Spinach"));
+  }
+  
+  public void testMarkAsBoughtFalse() {
+    GroceryItem carrot = new GroceryItem("Carrot", 2);
+    GroceryItem cabbage = new GroceryItem("Cabbage", 2);
+    GroceryItem squash = new GroceryItem("Squash", 2);
+    GroceryItem okra = new GroceryItem("Okra", 2);
+    GroceryItem eggplant = new GroceryItem("Eggplant", 2);
+    GroceryItem gourd = new GroceryItem("Bitter Gourd", 2);
+    GroceryItem spinach = new GroceryItem("Spinach", 2);
+    GroceryItem shoots = new GroceryItem("Bamboo Shoots", 2);
+    GroceryItem gabi = new GroceryItem("Gabi", 2);
+    GroceryItem tomato = new GroceryItem("Tomato", 2);
+    
+    GroceryListLinked veges = new GroceryListLinked();
+    
+    veges.add(carrot);
+    veges.add(cabbage);
+    veges.add(squash);
+    veges.add(okra);
+    veges.add(eggplant);
+    veges.add(gourd);
+    veges.add(spinach);
+    veges.add(shoots);
+    
+    assertEquals(false, veges.markAsBought("bamboo"));
+    assertEquals(false, veges.markAsBought("gourd"));
+    assertEquals(false, veges.markAsBought("potato"));
   }
   
 }

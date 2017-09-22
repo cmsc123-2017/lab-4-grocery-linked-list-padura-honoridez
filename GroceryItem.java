@@ -41,6 +41,7 @@ class GroceryItem {
    *   this.addQuantity(int quantity)  --void
    *   this.toString()                 --String
    *   this.equals(Object o)           --boolean
+   *   this.isBoughtTrue()             --boolean
    */
   
   // -> boolean
