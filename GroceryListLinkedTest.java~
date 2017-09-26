@@ -48,7 +48,7 @@ public class GroceryListLinkedTest extends TestCase {
     veges.add(gabi);
     veges.add(tomato);
     
-    assertEquals(true, veges.remove("Carrot"));
+    assertEquals(true, veges.remove("Cabbage"));
     assertEquals(true, veges.remove("Tomato"));
     assertEquals(true, veges.remove("Eggplant"));
   }

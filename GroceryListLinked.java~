@@ -39,27 +39,13 @@ class GroceryListLinked implements IGroceryList {
   //String -> boolean
   //Returns true once item that matches with this name has been removed from the list
   public boolean remove(String name) {
-    if (this.size == 0){
-      return false;
-    }
-    
-    GroceryNode previous = head;
-    GroceryNode current = head.next;
-    
-    if (previous.data.equals(new GroceryItem(name, 0))) {
-      
-      previous = null;
-      head = current;
-      this.size--;
-      return true;
-      
-    }
+    GroceryNode current = head;
+    GroceryNode previous = current;
     
     while (current != null) {
       if (current.data.equals(new GroceryItem(name, 0))) {
-        
-        current = current.next;
-        previous.next = current;
+        previous.next = current.next;
+        current.next = current.next.next; 
         
         this.size--;
         return true;
