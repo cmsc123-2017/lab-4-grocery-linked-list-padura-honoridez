@@ -15,6 +15,7 @@ class GroceryListLinked implements IGroceryList {
    *   this.remove(String)        --boolean
    *   this.markAsBought(String)  --boolean
    *   this.display()             --void
+   *   this.indexOf(String)       -- int
    * 
    * Fields on GroceryNode:
    *   this.data        --GroceryItem
@@ -32,7 +33,7 @@ class GroceryListLinked implements IGroceryList {
   public boolean add(GroceryItem item) {
     GroceryNode newNode = new GroceryNode(item, head);
     head = newNode;
-    this.size++;
+    size++;
     return true;
   }      
   
@@ -95,6 +96,61 @@ class GroceryListLinked implements IGroceryList {
       current = current.next;
     }
   }
+  
+  // String -> int
+  // Returns the index of an item in a Linked list given a name
+  public int indexOf(String name){
+    GroceryNode current = head;
+
+    int index = 1;
+    while (current != null){
+      if (current.data.equals(new GroceryItem(name, 0))) {
+        return index;
+      } else {
+      index++;
+      current = current.next;
+      }
+    }
+    return -1;
+  }
+  
+  // int -> boolean
+  // Returns true if a given GroceryItem item and index of insertion is successful.
+  public boolean addIndex(GroceryItem item, int insert){
+    if (insert > size) {
+      return false;
+    }
+    
+    if (insert == 1) {
+      GroceryNode newNode = new GroceryNode(item, head);
+      head = newNode;
+      size++;
+      return true;
+    }
+    
+    GroceryNode newNode = new GroceryNode(item, head);
+
+    GroceryNode previous = head;
+    GroceryNode current = head.next;
+
+    
+    int previousIndex = 1;
+    while (previous != null) {
+      if (previousIndex == (insert - 1)) {
+        previous.next = newNode;
+        newNode.next = current;
+        current = current.next;
+        size++;
+        return true;
+      } else {
+        previousIndex++;
+        previous = current;
+        current = current.next;
+      }
+    }
+    return false;
+  }
+  
 }
 
 class GroceryNode {

@@ -139,4 +139,61 @@ public class GroceryListLinkedTest extends TestCase {
     assertEquals(false, veges.markAsBought("potato"));
   }
   
+  public void testIndexOf() {
+    GroceryItem carrot = new GroceryItem("Carrot", 2);
+    GroceryItem cabbage = new GroceryItem("Cabbage", 2);
+    GroceryItem squash = new GroceryItem("Squash", 2);
+    GroceryItem okra = new GroceryItem("Okra", 2);
+    GroceryItem eggplant = new GroceryItem("Eggplant", 2);
+    GroceryItem gourd = new GroceryItem("Bitter Gourd", 2);
+    GroceryItem spinach = new GroceryItem("Spinach", 2);
+    GroceryItem shoots = new GroceryItem("Bamboo Shoots", 2);
+    GroceryItem gabi = new GroceryItem("Gabi", 2);
+    GroceryItem tomato = new GroceryItem("Tomato", 2);
+    
+    GroceryListLinked veges = new GroceryListLinked();
+    
+    veges.add(carrot);
+    veges.add(cabbage);
+    veges.add(squash);
+    veges.add(okra);
+    veges.add(eggplant);
+    veges.add(gourd);
+    veges.add(spinach);
+    veges.add(shoots);
+    
+    assertEquals(8, veges.indexOf("Carrot"));
+    assertEquals(1, veges.indexOf("Bamboo Shoots"));
+    assertEquals(5, veges.indexOf("Okra"));
+    assertEquals(-1, veges.indexOf("Cucumber"));
+  }
+  
+   public void testAddIndex() {
+    GroceryItem carrot = new GroceryItem("Carrot", 2);
+    GroceryItem cabbage = new GroceryItem("Cabbage", 2);
+    GroceryItem squash = new GroceryItem("Squash", 2);
+    GroceryItem okra = new GroceryItem("Okra", 2);
+    GroceryItem eggplant = new GroceryItem("Eggplant", 2);
+    GroceryItem gourd = new GroceryItem("Bitter Gourd", 2);
+    GroceryItem spinach = new GroceryItem("Spinach", 2);
+    GroceryItem shoots = new GroceryItem("Bamboo Shoots", 2);
+    GroceryItem gabi = new GroceryItem("Gabi", 2);
+    GroceryItem tomato = new GroceryItem("Tomato", 2);
+    
+    GroceryListLinked veges = new GroceryListLinked();
+    
+    //veges.add(carrot);
+    veges.add(cabbage);
+    veges.add(squash);
+    //veges.add(okra);
+    veges.add(eggplant);
+    veges.add(spinach);
+    //veges.add(shoots);
+    
+    assertEquals(true, veges.addIndex(carrot, 1));
+    assertEquals(true, veges.addIndex(okra, 4));
+    assertEquals(true, veges.addIndex(shoots, 6));
+    assertEquals(false, veges.addIndex(gourd, 9));
+  }
+  
 }

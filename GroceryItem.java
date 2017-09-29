@@ -31,17 +31,17 @@ class GroceryItem {
     }
   }
   
-  //TEMPLATE
-  /* Fields:
-   *   this.name       --String
-   *   this.quantity   --int
-   *   this.isBought   --boolean
+  // TEMPLATE
+  /*   Fields:
+   *     this.name       --String
+   *     this.quantity   --int
+   *     this.isBought   --boolean
    * 
-   * Methods:
-   *   this.addQuantity(int quantity)  --void
-   *   this.toString()                 --String
-   *   this.equals(Object o)           --boolean
-   *   this.isBoughtTrue()             --boolean
+   *   Methods:
+   *     this.addQuantity(int quantity)  --void
+   *     this.toString()                 --String
+   *     this.equals(Object o)           --boolean
+   *     this.isBoughtTrue()             --boolean
    */
   
   // -> boolean

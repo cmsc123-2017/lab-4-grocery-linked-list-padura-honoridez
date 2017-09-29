@@ -15,6 +15,7 @@ class GroceryListLinked implements IGroceryList {
    *   this.remove(String)        --boolean
    *   this.markAsBought(String)  --boolean
    *   this.display()             --void
+   *   this.indexOf(String)       -- int
    * 
    * Fields on GroceryNode:
    *   this.data        --GroceryItem
@@ -32,20 +33,34 @@ class GroceryListLinked implements IGroceryList {
   public boolean add(GroceryItem item) {
     GroceryNode newNode = new GroceryNode(item, head);
     head = newNode;
-    this.size++;
+    size++;
     return true;
   }      
   
   //String -> boolean
   //Returns true once item that matches with this name has been removed from the list
   public boolean remove(String name) {
-    GroceryNode current = head;
-    GroceryNode previous = current;
+    if (this.size == 0){
+      return false;
+    }
+    
+    GroceryNode previous = head;
+    GroceryNode current = head.next;
+    
+    if (previous.data.equals(new GroceryItem(name, 0))) {
+      
+      previous = null;
+      head = current;
+      this.size--;
+      return true;
+      
+    }
     
     while (current != null) {
       if (current.data.equals(new GroceryItem(name, 0))) {
-        previous.next = current.next;
-        current.next = current.next.next; 
+        
+        current = current.next;
+        previous.next = current;
         
         this.size--;
         return true;
@@ -81,6 +96,30 @@ class GroceryListLinked implements IGroceryList {
       current = current.next;
     }
   }
+  
+  // String -> int
+  // Returns the index of an item in a Linked list given a name
+  public int indexOf(String name){
+    GroceryNode current = head;
+
+    int index = 1;
+    while (current != null){
+      if (current.data.equals(new GroceryItem(name, 0))) {
+        return index;
+      } else {
+      index++;
+      current = current.next;
+      }
+    }
+    return -1;
+  }
+  
+  // int -> boolean
+  // Returns true if a given GroceryItem item and index of insertion is successful.
+  public boolean addIndex(GroceryItem item, int insert){
+    return false;
+  }
+  
 }
 
 class GroceryNode {
